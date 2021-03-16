@@ -1,0 +1,138 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: conversion
+  # 数据源
+  datasource:
+    dynamic:
+      primary: datasource195
+      datasource:
+        #数据交换
+        dsmysql26:
+#          username: sjgj_kjj
+#          password: Sjgj_Kjj0929
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://10.68.136.26:3306/sjgj_kjj?serverTimezone=UTC
+        #  username: root
+        #  password: 123456
+        #  driver-class-name: com.mysql.cj.jdbc.Driver
+        #  url: jdbc:mysql://localhost:3306/sjgj_kjj?serverTimezone=UTC
+          username: sa
+          password: Yq111111
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://192.168.0.195:1433;
+
+        datasource195:
+          #          username: ODSOA
+          #          password: 123456
+          #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          #          url: jdbc:sqlserver://172.16.5.202:1433;
+          #195
+          username: sa
+          password: Yq111111
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://192.168.0.195:1433;
+        datasource215:
+          #          username: sa
+          #          password: Yq111111
+          #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          #          url: jdbc:sqlserver://172.16.5.202:1433;
+          username: test
+          password: wlzx87811024
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://192.168.0.215:1433;
+        ds215_read:
+          #          username: sa
+          #          password: Yq111111
+          #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          #          url: jdbc:sqlserver://172.16.5.202:1433;
+          username: test
+          password: wlzx87811024
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://192.168.0.215:1433;ApplicationIntent=ReadOnly;
+        datasource45:
+          #          username: sa
+          #          password: Yq111111
+          #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          #          url: jdbc:sqlserver://172.16.5.202:1433;
+          username: sa
+          password: wlzx87811024
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://172.16.5.45:1433;
+        datasource209:
+          username: test
+          password: wlzx87811024
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://192.168.0.209:1433;
+        datasource210:
+          username: sa
+          password: wlzx@87811024
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://192.168.0.210:1433;
+        datasource202:
+#          username: sa
+#          password: Yq111111
+#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#          url: jdbc:sqlserver://172.16.5.202:1433;
+          username: sa
+          password: wlzx@87811024
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://192.168.0.210:1433;
+        #数字高铁
+        dsHighRail:
+         username: sa
+         password: Yq111111
+         driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+         url: jdbc:sqlserver://192.168.0.195:1433;
+#          username: datawriter
+#          password: nbsti@87811024
+#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#          url: jdbc:sqlserver://10.74.34.195:1433;
+        #象山县数据交换
+        dsXKJJ:
+          username: sa
+          password: Yq111111
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://192.168.0.195:1433;
+#          username: XKJJ
+#          password: Xkjj@1234
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://10.68.137.216:10036/XKJJ?serverTimezone=UTC
+
+
+      druid: #以下均为默认值
+        initial-size: 3
+        max-active: 8
+        min-idle: 2
+        max-wait: -1
+        min-evictable-idle-time-millis: 30000
+        max-evictable-idle-time-millis: 30000
+        time-between-eviction-runs-millis: 0
+        validation-query: select 1
+        validation-query-timeout: -1
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        pool-prepared-statements: true
+        max-open-prepared-statements: 100
+        filters: stat,wall
+        share-prepared-statements: true
+logging:
+  level:
+    root: INFO
+    org:
+      hibernate: INFO
+    com:
+      itmuch: DEBUG
+    org.hibernate.type.descriptor.sql:
+      BasicBinder: TRACE
+      BasicExtractor: TRACE
+  #    com.yq.conversion.dao: debug
+  config: classpath:logback-spring.xml
+mybatis:
+  configuration:
+    jdbc-type-for-null: null
+    map-underscore-to-camel-case: true
+#  mapper-locations: classpath:mapper/*.xml
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

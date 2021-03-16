@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--该日志将日志级别不同的log信息保存到不同的文件中 -->
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <springProperty scope="context" name="springAppName"
+                    source="spring.application.name"/>
+
+
+    <!-- 日志在工程中的输出位置 -->
+    <property name="LOG_FILE" value="${BUILD_FOLDER:-build}/${springAppName}"/>
+
+    <!-- 控制台的日志输出样式 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+
+    <!-- 控制台输出 -->
+    <!-- 日志级别从低到高分为TRACE < DEBUG < INFO < WARN < ERROR < FATAL，如果设置为WARN，则低于WARN的信息都不会输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+            <!--            <level>ERROR</level>-->
+        </filter>
+        <!-- 日志输出编码 -->
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF8</charset>
+        </encoder>
+    </appender>
+
+
+    <!--    错误日志写入到数据库中    -->
+<!--    <appender name="myApperder" class="com.yq.conversion.Filter.MyDBAppender">-->
+<!--        &lt;!&ndash;   过滤器     &ndash;&gt;-->
+<!--        &lt;!&ndash;        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <evaluator> &lt;!&ndash; defaults to type ch.qos.logback.classic.boolex.JaninoEventEvaluator &ndash;&gt;&ndash;&gt;-->
+<!--        &lt;!&ndash;                <expression>&ndash;&gt;-->
+<!--        &lt;!&ndash;                    if (((String)mdc.get("archiveLog"))!=null &amp;&amp; ((String)mdc.get("archiveLog")).equals("1")&ndash;&gt;-->
+<!--        &lt;!&ndash;                    &amp;&amp; ((String)mdc.get("appCode")).equals("500")&ndash;&gt;-->
+<!--        &lt;!&ndash;                    )&ndash;&gt;-->
+<!--        &lt;!&ndash;                    return true;&ndash;&gt;-->
+<!--        &lt;!&ndash;                    return false;&ndash;&gt;-->
+<!--        &lt;!&ndash;                </expression>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </evaluator>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <OnMismatch>DENY</OnMismatch>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <OnMatch>ACCEPT</OnMatch>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </filter>&ndash;&gt;-->
+<!--        &lt;!&ndash;   过滤器     &ndash;&gt;-->
+<!--        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">-->
+<!--            <evaluator> &lt;!&ndash; defaults to type ch.qos.logback.classic.boolex.JaninoEventEvaluator &ndash;&gt;-->
+<!--                <expression>-->
+<!--                    if (((String)mdc.get("toJobErrorLog"))!=null &amp;&amp;-->
+<!--                    ((String)mdc.get("toJobErrorLog")).equals("true"))-->
+<!--                    return true;-->
+<!--                    return false;-->
+<!--                </expression>-->
+<!--            </evaluator>-->
+<!--            <OnMismatch>DENY</OnMismatch>-->
+<!--            <OnMatch>ACCEPT</OnMatch>-->
+<!--        </filter>-->
+
+<!--        &lt;!&ndash;        <filter class="ch.qos.logback.classic.filter.LevelFilter">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <level>ERROR</level>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <onMatch>ACCEPT</onMatch>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <onMismatch>DENY</onMismatch>&ndash;&gt;-->
+<!--        &lt;!&ndash;        </filter>&ndash;&gt;-->
+<!--        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">-->
+<!--            <driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>-->
+<!--            <url>jdbc:sqlserver://192.168.0.215:1433</url>-->
+<!--            <user>test</user>-->
+<!--            <password>wlzx87811024</password>-->
+<!--        </connectionSource>-->
+<!--    </appender>-->
+
+
+<!--    <appender name="JobOperationLogAppender" class="com.yq.conversion.Filter.JobOperationLogAppender">-->
+<!--        &lt;!&ndash;   过滤器     &ndash;&gt;-->
+<!--        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">-->
+<!--            <evaluator> &lt;!&ndash; defaults to type ch.qos.logback.classic.boolex.JaninoEventEvaluator &ndash;&gt;-->
+<!--                <expression>-->
+<!--                    if (((String)mdc.get("toJobOperationLog"))!=null &amp;&amp;-->
+<!--                    ((String)mdc.get("toJobOperationLog")).equals("true"))-->
+<!--                    return true;-->
+<!--                    return false;-->
+<!--                </expression>-->
+<!--            </evaluator>-->
+<!--            <OnMismatch>DENY</OnMismatch>-->
+<!--            <OnMatch>ACCEPT</OnMatch>-->
+<!--        </filter>-->
+<!--        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">-->
+<!--            <driverClass>com.microsoft.sqlserver.jdbc.SQLServerDriver</driverClass>-->
+<!--            <url>jdbc:sqlserver://192.168.0.215:1433</url>-->
+<!--            <user>test</user>-->
+<!--            <password>wlzx87811024</password>-->
+<!--        </connectionSource>-->
+<!--    </appender>-->
+
+
+    <!-- 为logstash输出的JSON格式的Appender -->
+<!--    <appender name="logstash"-->
+<!--              class="net.logstash.logback.appender.LogstashTcpSocketAppender">-->
+<!--        <destination>172.16.1.181:5044</destination>-->
+
+<!--        &lt;!&ndash;   过滤器     &ndash;&gt;-->
+<!--        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">-->
+<!--            <evaluator> &lt;!&ndash; defaults to type ch.qos.logback.classic.boolex.JaninoEventEvaluator &ndash;&gt;-->
+<!--                <expression>-->
+<!--                    if (((String)mdc.get("archiveLog"))!=null &amp;&amp; ((String)mdc.get("archiveLog")).equals("1"))-->
+<!--                    return true;-->
+<!--                    return false;-->
+<!--                </expression>-->
+<!--            </evaluator>-->
+<!--            <OnMismatch>DENY</OnMismatch>-->
+<!--            <OnMatch>ACCEPT</OnMatch>-->
+<!--        </filter>-->
+
+<!--        &lt;!&ndash; 日志输出编码 &ndash;&gt;-->
+<!--        <encoder-->
+<!--                class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">-->
+<!--            <providers>-->
+<!--                <timestamp>-->
+<!--                    <timeZone>UTC</timeZone>-->
+<!--                </timestamp>-->
+<!--                <pattern>-->
+<!--                    <pattern>-->
+<!--                        {-->
+<!--                        "appName": "数据中心",-->
+<!--                        "severity": "%level",-->
+<!--                        &lt;!&ndash;                        "service": "${springAppName:-}",&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        "trace": "%X{X-B3-TraceId:-}",&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        "span": "%X{X-B3-SpanId:-}",&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        "exportable": "%X{X-Span-Export:-}",&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        "pid": "${PID:-}",&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        "thread": "%thread",&ndash;&gt;-->
+<!--                        "class": "%logger{40}",-->
+<!--                        &lt;!&ndash;                        "rest": "%message",&ndash;&gt;-->
+<!--                        "appEnv": "pro",-->
+<!--                        "logLevel": "%level",-->
+<!--                        "appUser": "%X{appUser}",-->
+<!--                        "appFunction": "%X{appFunction}",-->
+<!--                        "appInput": "%X{appInput}",-->
+<!--                        "appOutput": "%X{appOutput}",-->
+<!--                        "appCode": "%X{appCode}",-->
+<!--                        "archiveLog":"%X{archiveLog}",-->
+<!--                        "logType":"%X{logType}",-->
+<!--                        "logInfo":"%message",-->
+<!--                        "jobErrorLog":"%X{jobErrorLog}",-->
+<!--                        "jobOperationLog":"%X{jobOperationLog}"-->
+<!--                        }-->
+<!--                    </pattern>-->
+<!--                </pattern>-->
+<!--            </providers>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <!-- 日志输出级别 -->
+    <root level="ERROR">
+        <appender-ref ref="console"/>
+<!--        <appender-ref ref="logstash"/>-->
+<!--        <appender-ref ref="myApperder"/>-->
+<!--        <appender-ref ref="JobOperationLogAppender"/>-->
+    </root>
+
+</configuration>
