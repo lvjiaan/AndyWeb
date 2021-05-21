@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AndyWebRunner implements ApplicationRunner {
-    public void run(ApplicationArguments args) throws Exception {
-        System.out.println("damn it");
+    public void run(ApplicationArguments args) {
+        System.out.println("server start");
     }
 }
