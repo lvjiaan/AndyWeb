@@ -6,100 +6,23 @@ spring:
   # 数据源
   datasource:
     dynamic:
-      primary: datasource195
+      primary: ms187
       datasource:
-        #数据交换
-        dsmysql26:
-#          username: sjgj_kjj
-#          password: Sjgj_Kjj0929
-#          driver-class-name: com.mysql.cj.jdbc.Driver
-#          url: jdbc:mysql://10.68.136.26:3306/sjgj_kjj?serverTimezone=UTC
-        #  username: root
-        #  password: 123456
-        #  driver-class-name: com.mysql.cj.jdbc.Driver
-        #  url: jdbc:mysql://localhost:3306/sjgj_kjj?serverTimezone=UTC
+        ms187:
           username: sa
-          password: Yq111111
+          password: zhangxueyang@2021
           driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          url: jdbc:sqlserver://192.168.0.195:1433;
-
-        datasource195:
-          #          username: ODSOA
-          #          password: 123456
-          #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          #          url: jdbc:sqlserver://172.16.5.202:1433;
-          #195
-          username: sa
-          password: Yq111111
-          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          url: jdbc:sqlserver://192.168.0.195:1433;
-        datasource215:
-          #          username: sa
-          #          password: Yq111111
-          #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          #          url: jdbc:sqlserver://172.16.5.202:1433;
-          username: test
-          password: wlzx87811024
-          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          url: jdbc:sqlserver://192.168.0.215:1433;
-        ds215_read:
-          #          username: sa
-          #          password: Yq111111
-          #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          #          url: jdbc:sqlserver://172.16.5.202:1433;
-          username: test
-          password: wlzx87811024
-          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          url: jdbc:sqlserver://192.168.0.215:1433;ApplicationIntent=ReadOnly;
-        datasource45:
-          #          username: sa
-          #          password: Yq111111
-          #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          #          url: jdbc:sqlserver://172.16.5.202:1433;
-          username: sa
-          password: wlzx87811024
-          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          url: jdbc:sqlserver://172.16.5.45:1433;
-        datasource209:
-          username: test
-          password: wlzx87811024
-          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          url: jdbc:sqlserver://192.168.0.209:1433;
-        datasource210:
-          username: sa
-          password: wlzx@87811024
-          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          url: jdbc:sqlserver://192.168.0.210:1433;
-        datasource202:
+          url: jdbc:sqlserver://192.168.4.187:1433;
+#        datasource209:
+#          username: test
+#          password: wlzx87811024
+#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#          url: jdbc:sqlserver://192.168.0.209:1433;
+#        datasource210:
 #          username: sa
-#          password: Yq111111
+#          password: wlzx@87811024
 #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#          url: jdbc:sqlserver://172.16.5.202:1433;
-          username: sa
-          password: wlzx@87811024
-          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          url: jdbc:sqlserver://192.168.0.210:1433;
-        #数字高铁
-        dsHighRail:
-         username: sa
-         password: Yq111111
-         driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-         url: jdbc:sqlserver://192.168.0.195:1433;
-#          username: datawriter
-#          password: nbsti@87811024
-#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#          url: jdbc:sqlserver://10.74.34.195:1433;
-        #象山县数据交换
-        dsXKJJ:
-          username: sa
-          password: Yq111111
-          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-          url: jdbc:sqlserver://192.168.0.195:1433;
-#          username: XKJJ
-#          password: Xkjj@1234
-#          driver-class-name: com.mysql.cj.jdbc.Driver
-#          url: jdbc:mysql://10.68.137.216:10036/XKJJ?serverTimezone=UTC
-
+#          url: jdbc:sqlserver://192.168.0.210:1433;
 
       druid: #以下均为默认值
         initial-size: 3

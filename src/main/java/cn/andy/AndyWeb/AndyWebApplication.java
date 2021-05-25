@@ -9,7 +9,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication(exclude = DruidDataSourceAutoConfigure.class)
-//@MapperScan(value = {"com.yq.conversion.dao"})
+@MapperScan(value = {"cn.andy.AndyWeb.dao"})
 @EnableCaching
 public class AndyWebApplication extends SpringBootServletInitializer {
 
