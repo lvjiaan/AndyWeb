@@ -1,9 +1,12 @@
 package cn.andy.AndyWeb.service.Impl;
 
 import cn.andy.AndyWeb.dao.LvjiaanDao;
+import cn.andy.AndyWeb.entity.ResKnowledgeAgency;
 import cn.andy.AndyWeb.service.LvjiaanService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @Describe:
@@ -28,5 +31,11 @@ public class LvjiaanServiceImpl implements LvjiaanService {
         lvjiaanDao.insert1();
         lvjiaanDao.insert2();
 
+    }
+
+    @Override
+    public List<ResKnowledgeAgency> getResKnowledgeAgencyList() {
+
+        return lvjiaanDao.getResKnowledgeAgencyList();
     }
 }

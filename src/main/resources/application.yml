@@ -18,11 +18,11 @@ spring:
 #          password: wlzx87811024
 #          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 #          url: jdbc:sqlserver://192.168.0.209:1433;
-#        datasource210:
-#          username: sa
-#          password: wlzx@87811024
-#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#          url: jdbc:sqlserver://192.168.0.210:1433;
+        ms210:
+          username: sa
+          password: wlzx@87811024
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://172.16.5.74:1433;
 
       druid: #以下均为默认值
         initial-size: 3
@@ -57,5 +57,4 @@ mybatis:
   configuration:
     jdbc-type-for-null: null
     map-underscore-to-camel-case: true
-#  mapper-locations: classpath:mapper/*.xml
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

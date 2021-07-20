@@ -1,7 +1,11 @@
 package cn.andy.AndyWeb.dao;
 
+import cn.andy.AndyWeb.entity.ResKnowledgeAgency;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * @Describe:
@@ -10,7 +14,7 @@ import org.apache.ibatis.annotations.Insert;
  * @Modifier：
  * @ModefiedDate:
  */
-@DS("ms187")
+@DS("ms210")
 public interface LvjiaanDao {
 
 
@@ -19,4 +23,9 @@ public interface LvjiaanDao {
 
     @Insert("insert into lvjiaan.dbo.test2(id2) values('2')")
     void insert2();
+
+
+    @Select("SELECT top 1 app_service_organization_code appServiceOrganizationCode,app_type appType,city_code cityCode,cname,country_code countryCode,grade_level gradeLevel,plat_code platCode,product_content productContent," +
+            "product_label productLabel,product_main_Img productMainImg,product_price productPrice,product_status productStatus,province_code provinceCode,syn_status synStatus FROM SwapData.CSJ.t_knowledge_agency")
+    List<ResKnowledgeAgency> getResKnowledgeAgencyList();
 }

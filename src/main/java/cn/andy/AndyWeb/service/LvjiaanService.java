@@ -1,5 +1,9 @@
 package cn.andy.AndyWeb.service;
 
+import cn.andy.AndyWeb.entity.ResKnowledgeAgency;
+
+import java.util.List;
+
 /**
  * @Describe:
  * @Author：lvja
@@ -10,4 +14,6 @@ package cn.andy.AndyWeb.service;
 public interface LvjiaanService {
 
     void insertTest();
+
+    List<ResKnowledgeAgency> getResKnowledgeAgencyList();
 }
