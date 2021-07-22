@@ -2,8 +2,11 @@ package cn.andy.AndyWeb.controller;
 
 import cn.andy.AndyWeb.entity.FailMessage;
 import cn.andy.AndyWeb.entity.ResKnowledgeAgency;
+import cn.andy.AndyWeb.service.LvjaService;
 import cn.andy.AndyWeb.service.LvjiaanService;
+import cn.andy.AndyWeb.service.PostService;
 import cn.andy.AndyWeb.service.WebServiceKnowledgeService;
+
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +25,13 @@ import java.util.List;
 @RestController
 public class ApiController {
     private final LvjiaanService lvjiaanService;
+    private final PostService postService;
+    private final LvjaService lvjaService;
 
-    public ApiController(LvjiaanService lvjiaanService) {
+    public ApiController(LvjiaanService lvjiaanService, PostService postService, LvjaService lvjaService) {
         this.lvjiaanService = lvjiaanService;
+        this.postService = postService;
+        this.lvjaService = lvjaService;
     }
 
 
@@ -89,5 +96,42 @@ public class ApiController {
             e.printStackTrace();
         }
     }
+
+
+    @RequestMapping("/testPost")
+    public void testPost(){
+
+    }
+
+    //战略性新兴产业分类 与 IPC 清洗
+
+    @RequestMapping("/TmtIpc")
+    public void TmtIpc(){
+        lvjaService.TmtIpc();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
