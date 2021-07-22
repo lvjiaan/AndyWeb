@@ -105,9 +105,12 @@ public class ApiController {
 
     //战略性新兴产业分类 与 IPC 清洗
 
+
     @RequestMapping("/TmtIpc")
     public void TmtIpc(){
-        lvjaService.TmtIpc();
+        System.out.println(lvjaService.getAllIpcFromRoot("B22F9/02"));
+
+//        lvjaService.TmtIpc();
     }
 
 
