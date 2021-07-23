@@ -34,7 +34,8 @@ public class LvjaService {
     }
 
     private void cleanOneEmerging(Emerging item) {
-        List<String> outIpcList = null;
+        List<String> outIpcList = new ArrayList<>();
+        List<String> inIpcList = new ArrayList<>();
         if (item.getClassifyOut() != null) {
             String[] outs = item.getClassifyOut().split("、");
             for (int i = 0; i < outs.length; i++) {
@@ -44,32 +45,43 @@ public class LvjaService {
                 else {
                     outIpcList.addAll(getAllIpcFromRoot(outstr));
                 }
-
             }
-
-
         }
 
-
+        if (item.getClassifyIn() != null) {
+            String[] ins = item.getClassifyIn().split("、");
+            for (int i = 0; i < ins.length; i++) {
+                String instr = ins[i];
+                if (!instr.contains("*"))
+                    inIpcList.add(instr);
+                else {
+                    if (getAllIpcFromRoot(instr)!=null)
+                    inIpcList.addAll(getAllIpcFromRoot(instr));
+                }
+            }
+        }
+        //bigCode,bigName,smallCode,smallName,classifyIn,classifyOut,keyWords
+        if (outIpcList!=null)
+        inIpcList.removeAll(outIpcList);
+        for (String ipc:inIpcList){
+            ms187Dao.insertAIpc(item.getBigCode(),item.getBigName(),item.getSmallCode(),item.getSmallName(),
+                    item.getKeyWords(),ipc);
+        }
     }
 
-    public List<String> getAllIpcFromRoot(String ipc) {
+    private List<String> getAllIpcFromRoot(String ipc) {
         List<String> ipcList = new ArrayList<>();
         if (ipc.endsWith("*"))
             //如果带有*,返回不带*的或者加上/00
             ipc = ms187Dao.getRootIpc(ipc.substring(0, ipc.length() - 1));
         //修正后的根级ipc加入列表
         ipcList.add(ipc);
-
         List<String> sonIpcList = ms187Dao.getSonIpcList(ipc);
-
         if (sonIpcList != null && sonIpcList.size() >= 1)
             for (String sonIpc : sonIpcList) {
                 ipcList.addAll(getAllIpcFromRoot(sonIpc));
             }
-
         return ipcList;
-
     }
 
 }

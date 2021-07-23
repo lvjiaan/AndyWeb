@@ -108,9 +108,9 @@ public class ApiController {
 
     @RequestMapping("/TmtIpc")
     public void TmtIpc(){
-        System.out.println(lvjaService.getAllIpcFromRoot("B22F9/02"));
+//        System.out.println(lvjaService.getAllIpcFromRoot("B22F9/02"));
 
-//        lvjaService.TmtIpc();
+        lvjaService.TmtIpc();
     }
 
 
