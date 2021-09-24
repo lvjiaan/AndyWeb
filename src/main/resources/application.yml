@@ -13,11 +13,11 @@ spring:
           password: zhangxueyang@2021
           driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
           url: jdbc:sqlserver://192.168.4.187:1433;
-#        datasource209:
-#          username: test
-#          password: wlzx87811024
-#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#          url: jdbc:sqlserver://192.168.0.209:1433;
+        ms209:
+          username: test
+          password: wlzx87811024
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://192.168.0.209:1433;
         ms210:
           username: sa
           password: wlzx@87811024
