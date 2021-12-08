@@ -9,4 +9,6 @@ package cn.lalisa.web.service.xml;
 public interface XmlParseService {
 
     void insertZip(String path);
+
+    int getTextCount(String status);
 }

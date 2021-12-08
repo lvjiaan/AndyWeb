@@ -1,6 +1,5 @@
 package cn.lalisa.web.dao;
 
-import cn.lalisa.web.entity.ResKnowledgeAgency;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;

@@ -1,5 +1,7 @@
 package cn.lalisa.web.service.xml.Impl;
 
+import cn.lalisa.web.dao.base.BaseDao187;
+import cn.lalisa.web.service.xml.ListXmlFiles;
 import cn.lalisa.web.service.xml.XmlParseService;
 import cn.hutool.core.util.StrUtil;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,11 @@ import java.util.Map;
  */
 @Service
 public class XmlParseServiceImpl implements XmlParseService {
+    private final BaseDao187 baseDao187;
+
+    public XmlParseServiceImpl(BaseDao187 baseDao187) {
+        this.baseDao187 = baseDao187;
+    }
 
 
     @Override
@@ -32,19 +39,29 @@ public class XmlParseServiceImpl implements XmlParseService {
         for (File f : fileList) {
             //把每个文件存放到HashMap中
             try {
-                Map<String, Object> map = new HashMap<>();
+                Map<String, Object> map = new HashMap<>(8);
                 String sub = StrUtil.sub(f.getAbsolutePath().replace("\\", "@"), 3, -4);
                 map.put("ID", sub);
                 map.put("StoragePath", f.getAbsolutePath() + "");
                 map.put("PackageName", f.getName() + "");
                 String[] split = f.getAbsolutePath().split("\\\\");
-//                String type = SubStringUtil.subString(f.getAbsolutePath(), "D:\\XML\\", "\\2");
                 map.put("Type", split[2]);
-                generalDao.insertSQL("DW_ResultLibrary.dbo.CT_FlieZIP", map, "");
+                baseDao187.insert("DW_ResultLibrary.dbo.CT_FlieZIP", map, "");
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
+    }
+
+    @Override
+    public int getTextCount(String status) {
+        if ("all".equals(status)){
+            String id = baseDao187.selectOneCondition("count(1)", "DW_ResultLibrary.dbo.CT_FlieZIP", "(Type = 'FULLTEXT_INVENTION_PUBLICATION' or Type = 'FULLTEXT_INVENTION_GRANT' or Type = 'FULLTEXT_UTILITY_MODEL') and status = 0", "");
+            return Integer.parseInt(id);
+        }else{
+            String id = baseDao187.selectOneCondition("count(1)", "DW_ResultLibrary.dbo.CT_FlieZIP", "(Type = 'FULLTEXT_INVENTION_PUBLICATION' or Type = 'FULLTEXT_INVENTION_GRANT' or Type = 'FULLTEXT_UTILITY_MODEL') and status = "+status, "");
+            return Integer.parseInt(id);
+        }
     }
 }

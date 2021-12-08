@@ -1,7 +1,5 @@
 package cn.lalisa.web.service;
 
-import cn.lalisa.web.entity.ResKnowledgeAgency;
-
 import java.util.List;
 
 /**

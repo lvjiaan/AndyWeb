@@ -1,7 +1,6 @@
 package cn.lalisa.web.service.Impl;
 
 import cn.lalisa.web.dao.LvjiaanDao;
-import cn.lalisa.web.entity.ResKnowledgeAgency;
 import cn.lalisa.web.service.LvjiaanService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
